@@ -1,6 +1,7 @@
 <script>
 	import { browser } from '$app/environment';
 	import { onMount, onDestroy } from 'svelte';
+	import { page } from '$app/stores';
 
 	let navItems = ['home', 'about_us', 'services', 'market_area', 'branch', 'contact_us'];
 	let bgTransparent = true;
@@ -14,7 +15,7 @@
 	onMount(() => {
 		if (browser) {
 			window.addEventListener('scroll', handleScroll);
-			handleScroll(); // Initialize on mount
+			handleScroll();
 		}
 	});
 
@@ -26,7 +27,7 @@
 </script>
 
 <div
-	class={`fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b border-gray-200 px-8 py-4 transition-colors duration-300 ${
+	class={`fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b border-gray-200 px-8 py-2 transition-colors duration-300 ${
 		bgTransparent ? 'bg-transparent' : 'bg-white shadow-md'
 	}`}
 >
@@ -35,7 +36,12 @@
 	</a>
 	<nav class="flex gap-6 font-semibold">
 		{#each navItems as item}
-			<a href={`/${item === 'home' ? '' : item}`} class="transition-colors hover:text-blue-600">
+			<a
+				href={`/${item === 'home' ? '' : item}`}
+				class={`transition-colors ${
+					$page.url.pathname === `/${item === 'home' ? '' : item}` ? 'text-blue-500' : ''
+				}`}
+			>
 				{item
 					.split('_')
 					.map((word) => word[0].toUpperCase() + word.slice(1))

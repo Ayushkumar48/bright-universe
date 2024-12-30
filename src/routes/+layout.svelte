@@ -1,4 +1,5 @@
 <script>
+	import Footer from '$lib/Footer/Footer.svelte';
 	import Navbar from '$lib/Navbar/Navbar.svelte';
 	import '../app.css';
 	let { children } = $props();
@@ -6,5 +7,8 @@
 
 <div class="absolute">
 	<Navbar />
-	{@render children()}
+	<div class="flex flex-col gap-16">
+		{@render children()}
+		<Footer />
+	</div>
 </div>
