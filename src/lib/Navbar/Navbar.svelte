@@ -3,7 +3,7 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { page } from '$app/stores';
 
-	let navItems = ['home', 'about_us', 'services', 'market_area', 'branch', 'contact_us'];
+	let navItems = ['home', 'about_us', 'services', 'contact_us'];
 	let bgTransparent = true;
 
 	function handleScroll() {
@@ -27,12 +27,12 @@
 </script>
 
 <div
-	class={`fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b border-gray-200 px-8 py-2 transition-colors duration-300 ${
+	class={`fixed left-0 top-0 z-50 flex w-full items-center justify-between border-b border-gray-200 px-8 transition-colors duration-300 ${
 		bgTransparent ? 'bg-transparent' : 'bg-white shadow-md'
 	}`}
 >
 	<a href="/" class="flex items-center">
-		<img src="/logo.svg" alt="logo" class="h-16" />
+		<img src="/logo.svg" alt="logo" class="h-20" />
 	</a>
 	<nav class="flex gap-6 font-semibold">
 		{#each navItems as item}
