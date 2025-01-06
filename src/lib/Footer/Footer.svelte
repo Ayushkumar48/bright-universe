@@ -1,16 +1,21 @@
-<div class="flex h-full w-full flex-col gap-20 bg-[#264653] px-20 py-8 text-white">
+<script>
+	import { MapPinAltOutline, EnvelopeOutline, PhoneOutline } from 'flowbite-svelte-icons';
+</script>
+
+<div class="flex h-full w-full flex-col bg-[#264653] py-8 pl-20 pr-48 text-white">
 	<div class="flex flex-row justify-between">
 		<div class="flex flex-col gap-8">
+			<img src="./logowhite.svg" alt="" class="my-[-20px] w-44" />
 			<div class="flex flex-row items-center gap-4">
-				<div>&#9993;</div>
+				<EnvelopeOutline />
 				<div>info.brightuniverse@gmail.com</div>
 			</div>
 			<div class="flex flex-row items-center gap-4">
-				<div>&#9990;</div>
+				<PhoneOutline />
 				<div>+91 88001 08303</div>
 			</div>
 			<div class="flex flex-row items-center gap-4">
-				<div>&#62405;</div>
+				<MapPinAltOutline />
 				<div>
 					<p>BRIGHT UNIVERSE</p>
 					<p>(International Freight Forwarders and Custom Clearance Agent)</p>
@@ -41,7 +46,7 @@
 				<div>China</div>
 				<div>Malaysia</div>
 				<div>South Korea</div>
-				<div>Maxico</div>
+				<div>Mexico</div>
 				<div>Canada</div>
 			</div>
 		</div>

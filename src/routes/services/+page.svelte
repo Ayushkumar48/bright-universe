@@ -49,14 +49,17 @@
 	];
 </script>
 
-<div class="flex flex-col gap-10">
+<div class="flex flex-col gap-10 pb-16">
 	<div>
 		<img src={containers} alt="containers" />
 	</div>
-	<div class="flex flex-col gap-32 px-10">
+	<div class="flex flex-col gap-20 px-10">
 		<div class="flex flex-col gap-4 text-center font-bold">
-			<div class="text-lg">OUR PROJECT</div>
-			<div class="text-3xl">SPECIAL SERVICES</div>
+			<div class="flex flex-row items-center justify-center gap-2 text-lg">
+				<img src="./marker.jpg" alt="marker" class="w-5" />
+				<div class="text-[#8555F9]">OUR PROJECT</div>
+			</div>
+			<div class="text-4xl text-gray-700">SPECIAL SERVICES</div>
 		</div>
 		<div class="flex flex-row flex-wrap gap-x-11 gap-y-11">
 			{#each services as service}
