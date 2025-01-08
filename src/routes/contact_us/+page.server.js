@@ -1,33 +1,27 @@
-import nodemailer from 'nodemailer';
-import { EMAIL_PASS, EMAIL_USER } from '$env/static/private';
-
 export const actions = {
-	default: async ({ request }) => {
-		const data = await request.formData();
-		const name = data.get('name');
-		const email = data.get('email');
-		const subject = data.get('subject');
-		const number = data.get('number');
-		const message = data.get('message');
+	default: async ({ request, fetch }) => {
 		try {
-			const transporter = nodemailer.createTransport({
-				service: 'Gmail',
-				auth: {
-					user: EMAIL_USER,
-					pass: EMAIL_PASS
-				}
+			const formData = await request.formData();
+			const email = formData.get('email');
+			const name = formData.get('name');
+			const number = formData.get('number');
+			const subject = formData.get('subject');
+			const message = formData.get('message');
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, email, subject, number, message })
 			});
 
-			await transporter.sendMail({
-				from: email,
-				to: EMAIL_USER,
-				subject,
-				text: `You have received a new message from ${name} \nEmail:- ${email} \nPhone:- ${number} \n\nMessage:-\n${message}`
-			});
+			if (!response.ok) {
+				throw new Error(`Failed to send email: ${response.statusText}`);
+			}
 
-			return { success: true };
-		} catch (err) {
-			console.log('Error while submitting form: ', err);
+			const result = await response.json();
+			return { success: result.success };
+		} catch (error) {
+			console.error('Error in form action:', error);
+			return { success: false, error: error.message };
 		}
 	}
 };
