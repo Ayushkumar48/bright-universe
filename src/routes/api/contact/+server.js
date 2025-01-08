@@ -25,6 +25,7 @@ export async function POST({ request }) {
 		});
 	} catch (err) {
 		console.log('Error while submitting form: ', err);
+
 		return new Response(JSON.stringify({ success: false }), {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' }

@@ -12,7 +12,6 @@ export const actions = {
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ name, email, subject, number, message })
 			});
-
 			if (!response.ok) {
 				throw new Error(`Failed to send email: ${response.statusText}`);
 			}
